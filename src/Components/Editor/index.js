@@ -13,19 +13,28 @@ export default function CodeEditor()
       );    
 
     return(
-        <div style={{boxShadow: '4px 4px 8px #888888', marginTop: '20px'}}>
-            <Editor
-              value={code}
-              onValueChange={(code) => setCode(code)}
-              highlight={(code) => highlight(code, languages.js)}
-              padding={10}
-              style={{
-                fontFamily: '"Fira code", "Fira Mono", monospace',
-                fontSize: 14,
-              }}
-              placeholder="Write some code..."
-              className="container__editor"
-            />
+        <div className="container">
+          <div className="row">
+            <div className="col-sm">
+              <div style={{boxShadow: '4px 4px 8px #888888', marginTop: '20px'}}>
+                <Editor
+                  value={code}
+                  onValueChange={(code) => setCode(code)}
+                  highlight={(code) => highlight(code, languages.js)}
+                  padding={10}
+                  style={{
+                    fontFamily: '"Fira code", "Fira Mono", monospace',
+                    fontSize: 14,
+                  }}
+                  placeholder="Write some code..."
+                  className="container__editor"
+                />
+              </div>
+            </div>
+            <div className="col-sm">
+              <button className="btn btn-primary" style={{marginTop: '20px'}}>Generate Result</button>
+            </div>
+          </div>
         </div>
     );
 }
