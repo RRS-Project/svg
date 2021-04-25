@@ -13,7 +13,7 @@
 <br/>
 <h3>Getting Started</h3>
 <p>Clone this repository: git clone https://github.com/RRS-Project/svg.git</p>  
-<p>Install all dependencies: yarn add</p>  
+<p>Install all dependencies: yarn</p>  
 <p>Run the application: yarn start</p>
 <br/>
 <h6>Project Created by<h6>
