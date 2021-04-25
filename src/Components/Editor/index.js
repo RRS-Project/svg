@@ -62,7 +62,7 @@ export default function CodeEditor()
         <div className="container">
           <div className="row">
             <div className="col-sm">
-              <div className="editor-options" style={{marginBottom: '30px', display: 'inline'}}>
+              <div className="editor-options" style={{marginBottom: '20px'}}>
                 <div>
                   <FormControl className={classes.formControl}>
                     <InputLabel id="demo-simple-select-label">Font Size</InputLabel>
