@@ -23,6 +23,10 @@ export function generator (svg_ast) {
         {
             return '<svg x="0"><circle ' + createAttrString(node.attr) + '></circle></svg>';
         }
+        else if(node.tag === 'ellipse')
+        {
+            return '<svg x="0"><ellipse ' + createAttrString(node.attr) + '></ellipse></svg>';
+        }
         return '<svg x="0"><line ' + createAttrString(node.attr) + '></line></svg>';
     }).join('\n\t')
   

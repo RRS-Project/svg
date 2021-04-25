@@ -109,8 +109,35 @@ export function parser (tokens) {
 
                 let i = 1;
 
-                // x, y, width, height, fill -> args
+                // x, y, radius, fill -> args
                 while(i <= 4)
+                {
+                    let args = tokens.shift()
+                    if(args.type === 'number')
+                    {
+                        expression.arguments.push({
+                            type: 'NumberLiteral',
+                            value: args.value
+                        }) 
+                    }
+                    i++;
+                }
+                AST.body.push(expression);
+                break
+            }
+
+            case 'Ellipse':
+            {
+                let expression = {
+                    type: "CallExpression",
+                    name: 'Ellipse',
+                    arguments: []
+                }
+
+                let i = 1;
+
+                // cx, cy, rx, ry, fill -> args
+                while(i <= 5)
                 {
                     let args = tokens.shift()
                     if(args.type === 'number')

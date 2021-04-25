@@ -84,6 +84,23 @@ export function transformer (ast) {
             ) 
             break
         }
+
+        case 'Ellipse':
+        {
+            svg_ast.body.push({ // add rect element information to svg_ast's body
+                tag : 'ellipse',
+                    attr : {
+                        cx: node.arguments[0].value,
+                        cy: node.arguments[1].value,
+                        rx: node.arguments[2].value,
+                        ry: node.arguments[3].value,
+                        fill: 'rgb(' + node.arguments[4].value + '%,' + node.arguments[4].value + '%,' + node.arguments[4].value + '%)',
+                        stroke: 'rgb(' + pen_color + '%,' + pen_color + '%,' + pen_color + '%)'
+                    }
+                }
+            ) 
+            break
+        }
         
         default:
             break
