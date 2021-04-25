@@ -43,7 +43,7 @@ export default function CodeEditor()
       if(code === '') {
         setOutput(null);
       }
-      else{
+      else {
         let finalSVG = compiler(code);
         setOutput(finalSVG);
       }
