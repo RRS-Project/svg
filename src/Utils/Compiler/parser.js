@@ -98,6 +98,33 @@ export function parser (tokens) {
                 AST.body.push(expression);
                 break
             }
+
+            case 'Circle':
+            {
+                let expression = {
+                    type: "CallExpression",
+                    name: 'Circle',
+                    arguments: []
+                }
+
+                let i = 1;
+
+                // x, y, width, height, fill -> args
+                while(i <= 4)
+                {
+                    let args = tokens.shift()
+                    if(args.type === 'number')
+                    {
+                        expression.arguments.push({
+                            type: 'NumberLiteral',
+                            value: args.value
+                        }) 
+                    }
+                    i++;
+                }
+                AST.body.push(expression);
+                break
+            }
             
             default:
                 break

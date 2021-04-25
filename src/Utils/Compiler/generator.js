@@ -19,6 +19,10 @@ export function generator (svg_ast) {
         {
             return '<svg x="0"><rect ' + createAttrString(node.attr) + '></rect></svg>';
         }
+        else if(node.tag === 'circle')
+        {
+            return '<svg x="0"><circle ' + createAttrString(node.attr) + '></circle></svg>';
+        }
         return '<svg x="0"><line ' + createAttrString(node.attr) + '></line></svg>';
     }).join('\n\t')
   

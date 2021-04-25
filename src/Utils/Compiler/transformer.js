@@ -61,7 +61,24 @@ export function transformer (ast) {
                         y: node.arguments[1].value,
                         width: node.arguments[2].value,
                         height: node.arguments[3].value,
-                        fill: 'rgb(' + node.arguments[4].value + '%,' + node.arguments[4].value + '%,' + node.arguments[4].value + '%)'
+                        fill: 'rgb(' + node.arguments[4].value + '%,' + node.arguments[4].value + '%,' + node.arguments[4].value + '%)',
+                        stroke: 'rgb(' + pen_color + '%,' + pen_color + '%,' + pen_color + '%)'
+                    }
+                }
+            ) 
+            break
+        }
+
+        case 'Circle':
+        {
+            svg_ast.body.push({ // add rect element information to svg_ast's body
+                tag : 'circle',
+                    attr : {
+                        cx: node.arguments[0].value,
+                        cy: node.arguments[1].value,
+                        r: node.arguments[2].value,
+                        fill: 'rgb(' + node.arguments[3].value + '%,' + node.arguments[3].value + '%,' + node.arguments[3].value + '%)',
+                        stroke: 'rgb(' + pen_color + '%,' + pen_color + '%,' + pen_color + '%)'
                     }
                 }
             ) 
