@@ -2,13 +2,36 @@ import React from 'react';
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import { compiler } from "../../Utils/Compiler/index";
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
 import "./index.css";
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 90,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
 export default function CodeEditor()
 {
+
+  const classes = useStyles();
+  const [font, setFont] = React.useState(14);
+
+  const handleChange = (event) => {
+    setFont(event.target.value);
+  };
+
     const [code, setCode] = React.useState(
         `Paper 100\nPen 0\nLine 0 0 100 100`
       );
@@ -39,6 +62,26 @@ export default function CodeEditor()
         <div className="container">
           <div className="row">
             <div className="col-sm">
+              <div className="editor-options" style={{marginBottom: '30px', display: 'inline'}}>
+                <div>
+                  <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">Font Size</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={font}
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={11}>11</MenuItem>
+                      <MenuItem value={12}>12</MenuItem>
+                      <MenuItem value={14}>14</MenuItem>
+                      <MenuItem value={16}>16</MenuItem>
+                      <MenuItem value={18}>18</MenuItem>
+                      <MenuItem value={20}>20</MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
+              </div>
               <div style={{boxShadow: '4px 4px 8px #888888'}}>
                 <Editor
                   value={code}
@@ -47,7 +90,7 @@ export default function CodeEditor()
                   padding={10}
                   style={{
                     fontFamily: '"Fira code", "Fira Mono", monospace',
-                    fontSize: 14,
+                    fontSize: font,
                   }}
                   placeholder="Write some code..."
                   className="container__editor"
