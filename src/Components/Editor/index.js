@@ -16,8 +16,23 @@ export default function CodeEditor()
     const [output, setOutput] = React.useState(null);
 
     function generateResult() {
-      let finalSVG = compiler(code);
-      setOutput(finalSVG);
+
+      if(code === '') {
+        setOutput(null);
+      }
+      else{
+        let finalSVG = compiler(code);
+        setOutput(finalSVG);
+      }
+    }
+
+    function downloadSVG()
+    {
+      const element = document.createElement("a");
+      const file = new Blob([output], {type: 'text/plain'});
+      element.href = URL.createObjectURL(file);
+      element.download = "svg-code.txt";// Required for this to work in FireFox
+      element.click();
     }
 
     return(
@@ -40,6 +55,7 @@ export default function CodeEditor()
               </div>
               <div>
                 <button className="btn btn-primary" style={{marginTop: '25px', marginBottom: '20px'}} onClick={generateResult}>Compile</button>
+                <button className="btn btn-warning" style={{marginTop: '25px', marginBottom: '20px', marginLeft: '15px', display: output === null ? 'none' : null}} onClick={downloadSVG}>Download SVG</button>
               </div>
             </div>
             <div className="col-sm">
