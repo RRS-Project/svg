@@ -24,7 +24,7 @@ export default function CodeEditor()
         <div className="container">
           <div className="row">
             <div className="col-sm">
-              <div style={{boxShadow: '4px 4px 8px #888888', marginTop: '20px'}}>
+              <div style={{boxShadow: '4px 4px 8px #888888'}}>
                 <Editor
                   value={code}
                   onValueChange={(code) => setCode(code)}
@@ -38,13 +38,13 @@ export default function CodeEditor()
                   className="container__editor"
                 />
               </div>
+              <div>
+                <button className="btn btn-primary" style={{marginTop: '25px', marginBottom: '20px'}} onClick={generateResult}>Compile</button>
+              </div>
             </div>
             <div className="col-sm">
-              <button className="btn btn-primary" style={{marginTop: '35px'}} onClick={generateResult}>Generate Result</button>
-              <br />
-              <br />
               <div className="svg-container">
-                {output === null ? <></> : <img src={`data:image/svg+xml;utf8,${encodeURIComponent(output)}`} alt="svg-result"/>}
+                {output === null ? <></> : <img src={`data:image/svg+xml;utf8,${encodeURIComponent(output)}`} alt="svg-result" style={{marginBottom: '25px'}}/>}
               </div>
             </div>
           </div>
