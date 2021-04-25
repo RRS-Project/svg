@@ -13,6 +13,7 @@ import PaperImage from "../../images/Paper.png";
 import CircleImage from "../../images/Circle.png";
 import EllipseImage from "../../images/Ellipse.png";
 import PenImage from "../../images/Pen.png";
+import './index.css';
 
 const styles = (theme) => ({
     root: {
@@ -59,8 +60,8 @@ export default function Header()
     return(
         <>
             <div className="jumbotron">
-                <h1 className="display-4">SVG Compiler</h1>
-                <p className="lead" style={{display: 'inline'}}>This is a simple compiler that compiles DBN like code to SVG</p>
+                <h1 className="display-4 title">SVG Compiler</h1>
+                <p className="lead sub-title" style={{display: 'inline'}}>This is a simple compiler that compiles DBN like code to SVG</p>
                 <span>
                     <div style={{display: 'inline'}}>
                     <IconButton onClick={() => setOpen(true)} style={{marginLeft: '2px'}}><InfoIcon/></IconButton>
