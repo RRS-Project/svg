@@ -1,14 +1,18 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import InfoIcon from '@material-ui/icons/Info';
+import RectImage from "../../images/Rect.png";
+import LineImage from "../../images/Line.png";
+import PaperImage from "../../images/Paper.png";
+import CircleImage from "../../images/Circle.png";
+import EllipseImage from "../../images/Ellipse.png";
+import PenImage from "../../images/Pen.png";
 
 const styles = (theme) => ({
     root: {
@@ -42,22 +46,12 @@ const styles = (theme) => ({
       padding: theme.spacing(2),
     },
   }))(MuiDialogContent);
-  
-  const DialogActions = withStyles((theme) => ({
-    root: {
-      margin: 0,
-      padding: theme.spacing(1),
-    },
-  }))(MuiDialogActions);
 
 export default function Header()
 {
 
     const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
     const handleClose = () => {
         setOpen(false);
     };
@@ -69,28 +63,56 @@ export default function Header()
                 <p className="lead" style={{display: 'inline'}}>This is a simple compiler that compiles DBN like code to SVG</p>
                 <span>
                     <div style={{display: 'inline'}}>
-                    <IconButton onClick={() => setOpen(true)}><InfoIcon /></IconButton>
+                    <IconButton onClick={() => setOpen(true)} style={{marginLeft: '2px'}}><InfoIcon/></IconButton>
                     </div>
                 </span>
             </div>
             <div>
                 <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
                     <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-                        SVG Code Examples
+                      SVG Compiler
                     </DialogTitle>
                     <DialogContent dividers>
                         <Typography gutterBottom>
-                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-                            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                            This compiler enables the users to write simple code in order to draw shapes and generate the corresponding SVGs, along with an option to download the SVG code
+                        </Typography>
+                        <h4 style={{marginTop: '20px', marginBottom: '20px'}}>Examples</h4>
+                        <p style={{marginTop: '20px', marginBottom: '20px'}}>
+                            The compiler currently supports the following statements
+                        </p>
+                        <Typography gutterBottom>
+                            1. Paper - Creates a frame
+                        </Typography>
+                        <img src={PaperImage} alt="rect-help" style={{marginTop: '10px', marginBottom: '10px'}}/>
+                        <Typography gutterBottom>
+                            2. Pen - Selects stroke color for the next shape
+                        </Typography>
+                        <img src={PenImage} alt="rect-help" style={{marginTop: '10px', marginBottom: '10px'}}/>
+                        <Typography gutterBottom>
+                            3. Line - Draws a line
+                        </Typography>
+                        <img src={LineImage} alt="rect-help" style={{marginTop: '10px', marginBottom: '10px'}}/>
+                        <Typography gutterBottom>
+                            4. Rect - Draws a rectangle
+                        </Typography>
+                        <img src={RectImage} alt="rect-help" style={{marginTop: '10px', marginBottom: '10px'}}/>
+                        <Typography gutterBottom>
+                            5. Circle - Draws a circle
+                        </Typography>
+                        <img src={CircleImage} alt="rect-help" style={{marginTop: '10px', marginBottom: '10px'}}/>
+                        <Typography gutterBottom>
+                            6. Ellipse - Draws an ellipse
+                        </Typography>
+                        <img src={EllipseImage} alt="rect-help" style={{marginTop: '10px', marginBottom: '10px'}}/>
+                        <h4 style={{marginTop: '10px', marginBottom: '10px'}}>Colors</h4>
+                        <Typography gutterBottom>
+                            The Fill / Stroke color supported ranges from 0 to 100, where
                         </Typography>
                         <Typography gutterBottom>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                            lacus vel augue laoreet rutrum faucibus dolor auctor.
+                            0 - White & 100 - Black
                         </Typography>
                         <Typography gutterBottom>
-                            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-                            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-                            auctor fringilla.
+                            The numbers in between give different shades of grey.
                         </Typography>
                     </DialogContent>
                 </Dialog>
