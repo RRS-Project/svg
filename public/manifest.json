@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SVG",
+  "name": "SVG Compiler",
   "icons": [
     {
       "src": "favicon.ico",
