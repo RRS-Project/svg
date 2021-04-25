@@ -1,7 +1,18 @@
 .container__editor{
-    background-color: #f6f6f6;
-  }
+  background-color: #f6f6f6;
+}
   
-  .container__editor textarea {
-    outline: 0;
+.container__editor textarea {
+  outline: 0;
+}
+
+.console {
+  text-align: center;
+}
+
+@media (max-width: 575px)
+{
+  .console {
+    text-align: left;
   }
+}

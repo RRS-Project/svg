@@ -33,7 +33,7 @@ export default function CodeEditor()
   };
 
     const [code, setCode] = React.useState(
-        `Paper 100\nPen 0\nLine 0 0 100 100`
+        `Paper 50\nPen 0\nLine 0 0 100 100`
       );
       
     const [output, setOutput] = React.useState(null);
@@ -98,10 +98,10 @@ export default function CodeEditor()
               </div>
               <div>
                 <button className="btn btn-primary" style={{marginTop: '25px', marginBottom: '20px'}} onClick={generateResult}>Compile</button>
-                <button className="btn btn-warning" style={{marginTop: '25px', marginBottom: '20px', marginLeft: '15px', display: output === null ? 'none' : null}} onClick={downloadSVG}>Download SVG</button>
+                <button className="btn btn-warning" style={{marginTop: '25px', marginBottom: '20px', marginLeft: '15px', display: output === null ? 'none' : null}} onClick={downloadSVG}>Download</button>
               </div>
             </div>
-            <div className="col-sm">
+            <div className="col-sm console">
               <div className="svg-container">
                 {output === null ? <></> : <img src={`data:image/svg+xml;utf8,${encodeURIComponent(output)}`} alt="svg-result" style={{marginBottom: '25px'}}/>}
               </div>
