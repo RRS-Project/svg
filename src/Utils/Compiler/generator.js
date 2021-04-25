@@ -11,7 +11,11 @@ export function generator (svg_ast) {
   
     // for each elements in the body of svg_ast, generate svg tag
     var elements = svg_ast.body.map(function (node) {
-        if(node.tag === 'rect')
+        if(node.tag === 'paper')
+        {
+            return '<svg x="0"><rect ' + createAttrString(node.attr) + '></rect></svg>';
+        }
+        else if(node.tag === 'rect')
         {
             return '<svg x="0"><rect ' + createAttrString(node.attr) + '></rect></svg>';
         }

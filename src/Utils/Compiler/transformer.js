@@ -2,7 +2,7 @@ export function transformer (ast) {
     var svg_ast = {
       tag : 'svg',
       attr: {
-        width: 100, height: 100, viewBox: '0 0 100 100',
+        width: 250, height: 250, viewBox: '0 0 100 100',
         xmlns: 'http://www.w3.org/2000/svg', version: '1.1'
       },
       body:[]
@@ -18,10 +18,12 @@ export function transformer (ast) {
         {
             var paper_color = 100 - node.arguments[0].value
             svg_ast.body.push({ // add rect element information to svg_ast's body
-            tag : 'rect',
+            tag : 'paper',
                 attr : {
-                    x: 0, y: 0,
-                    width: 100, height:100,
+                    x: '0',
+                    y: '0',
+                    width: 250,
+                    height: 250,
                     fill: 'rgb(' + paper_color + '%,' + paper_color + '%,' + paper_color + '%)'
                 }
             }
@@ -44,6 +46,22 @@ export function transformer (ast) {
                         x2: node.arguments[2].value,
                         y2: node.arguments[3].value,
                         stroke: 'rgb(' + pen_color + '%,' + pen_color + '%,' + pen_color + '%)'
+                    }
+                }
+            ) 
+            break
+        }
+
+        case 'Rect':
+        {
+            svg_ast.body.push({ // add rect element information to svg_ast's body
+                tag : 'rect',
+                    attr : {
+                        x: node.arguments[0].value,
+                        y: node.arguments[1].value,
+                        width: node.arguments[2].value,
+                        height: node.arguments[3].value,
+                        fill: 'rgb(' + node.arguments[4].value + '%,' + node.arguments[4].value + '%,' + node.arguments[4].value + '%)'
                     }
                 }
             ) 
