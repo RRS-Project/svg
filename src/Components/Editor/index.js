@@ -1,10 +1,7 @@
 import React from 'react';
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
-import { lexer } from "../../Utils/Compiler/lexer";
-import { parser } from "../../Utils/Compiler/parser";
-import { transformer } from "../../Utils/Compiler/transformer";
-import { generator } from "../../Utils/Compiler/generator";
+import { compiler } from "../../Utils/Compiler/index";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
@@ -19,12 +16,7 @@ export default function CodeEditor()
     const [output, setOutput] = React.useState(null);
 
     function generateResult() {
-      let lexArray = lexer(code);
-      let svg = parser(lexArray);
-      let ast_svg = transformer(svg);
-      // console.log(ast_svg);
-      // console.log(generator(ast_svg));
-      let finalSVG = generator(ast_svg);
+      let finalSVG = compiler(code);
       setOutput(finalSVG);
     }
 
